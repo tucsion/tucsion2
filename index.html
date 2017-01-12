@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>3D透视幻灯片效果</title>
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/mockup1.css" />
+		
+	</head>
+	<body>
+
+		<div id="wrap" class="wrap">
+			<div class="mockup">
+				<!-- <img class="mockup__img" src="img/mockup.jpg" />
+				<div id="mobile" class="mobile">
+					<ul id="slideshow" class="slideshow">
+						<li class="slideshow__item"><img src="img/small/1.png" /></li>
+						<li class="slideshow__item"><img src="img/small/2.png" /></li>
+						<li class="slideshow__item"><img src="img/small/3.png" /></li>
+						<li class="slideshow__item"><img src="img/small/4.png" /></li>
+					</ul>
+				</div> -->
+			</div>
+		</div>
+
+		
+		<script src="js/modernizr.custom.js"></script>
+		<script src="js/classie.js"></script>
+		<script src="js/main.js"></script>
+
+		<script>
+			(function() {
+				new Slideshow( document.getElementById( 'slideshow' ) );
+
+				/* Mockup responsiveness */
+				var body = docElem = window.document.documentElement,
+					wrap = document.getElementById( 'wrap' ),
+					mockup = wrap.querySelector( '.mockup' ),
+					mockupWidth = mockup.offsetWidth;
+
+				scaleMockup();
+
+				function scaleMockup() {
+					var wrapWidth = wrap.offsetWidth,
+						val = wrapWidth / mockupWidth;
+					mockup.style.transform = 'scale3d(' + val + ', ' + val + ', 1)';
+				}
+				
+				window.addEventListener( 'resize', resizeHandler );
+
+				function resizeHandler() {
+					function delayed() {
+						resize();
+						resizeTimeout = null;
+					}
+					if ( typeof resizeTimeout != 'undefined' ) {
+						clearTimeout( resizeTimeout );
+					}
+					resizeTimeout = setTimeout( delayed, 100 );
+				}
+
+				function resize() {
+					scaleMockup();
+				}
+			})();
+		</script>
+	</body>
+</html>
